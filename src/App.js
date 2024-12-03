@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+// import ColourBox from "./ColourBox"
 
 function App() {
+  const [color, setColor] = useState('')
+  const [colorBox, setColorBox] = useState([])
+
+  const colorChange = (e) => {
+    setColor(e.target.value)
+  }
+  const getColor = (e) => {
+    e.preventDefault()
+    setColorBox([...colorBox,color])
+    setColor("")
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        colorBox.map((color)=>(
+          <div className='h-[150px] w-[150px] border border-black' style={{backgroundColor:color}}>
+            {color}
+          </div>
+        ))
+      }
+      <input className='border border-black' type="text"
+        onChange={colorChange}
+        placeholder='Add Color' value={color}
+      /><br />
+      <button onClick={getColor}>Submit</button>
     </div>
+      // <ColourBox/>
   );
 }
 
