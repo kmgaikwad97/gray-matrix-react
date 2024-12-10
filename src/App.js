@@ -16,7 +16,7 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>Easy Task</h1>
+      <h1>Easy Task 1</h1>
       {
         colorBox.map((color)=>(
           <div className='h-[150px] w-[150px] border border-black' style={{backgroundColor:color}}>
